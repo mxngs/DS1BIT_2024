@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgba(230, 230, 230, 0.884);
+}
+
+.principal{
+    align-items: center;
+    right: 26%;
+    top: 110px;
+}
+
+.conteudo h2{
+    position: absolute;
+    color: white;
+    letter-spacing: 2px;
+    font-style: oblique;
+    font-weight: 700;
+    right: 550px;
+    top: 180px;
+    z-index: 2;
+    font-size: 100px;
+    background-color: brown;
+    
+}
+
+.quadrado2{
+    background-color: brown;
+    height: 700px;
+    width: 500px;
+    border-bottom-right-radius:  50px;
+    border-top-right-radius: 50px;
+    position: fixed;
+    align-items: center;
+    box-shadow: 1px 1px 6px;
+    right: 26%;
+    top: 110px;
+}
+.quadrado1{
+    background-color: rgb(255, 255, 255);
+    height: 700px;
+    width: 500px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    position: fixed;
+    align-items: center;
+    box-shadow: 1px 1px 6px;
+    left: 22%;
+    top: 110px;
+}
+
+
+
+.email{
+    position: fixed;
+    background-color:  rgba(230, 230, 230, 0.884);
+    box-shadow: 1px 1px 6px;
+    height: 40px;
+    width: 280px;
+    top:430px;
+    border-radius: 8px;
+    right: 660px;
+}
+
+.validaNome{
+    position: fixed;
+    background-color:  rgba(230, 230, 230, 0.884);
+    z-index: 2;
+    top:350px;
+    right: 750px;
+}
+.nome{
+    position: fixed;
+    background-color:  rgba(230, 230, 230, 0.884);
+    box-shadow: 1px 1px 6px;
+    height: 40px;
+    width: 280px;
+    top:340px;
+    border-radius: 8px;
+    right: 660px;
+}
+
+.validaEmail{
+    position: fixed;
+    background-color:  rgba(230, 230, 230, 0.884);
+    z-index: 2;
+    top:440px;
+    right: 750px;
+}
+
+.texto1 p{
+    position: absolute;
+    background-color: brown;
+    top:410px;
+    right: 900px;
+}
+
+.texto0 p{
+    position: absolute;
+    background-color: brown;
+    top:320px;
+    right: 900px;
+}
+
+.texto2{
+    position: absolute;
+    background-color: brown;
+    top:490px;
+    right: 900px;
+}
+.senha{
+    position: fixed;
+    background-color: rgba(230, 230, 230, 0.884);
+    box-shadow: 1px 1px 6px;
+    height: 40px;
+    width: 280px;
+    top:510px;
+    border-radius: 8px;
+    right: 660px;
+}
+
+.validaSenha{
+    position: fixed;
+    background-color: rgba(230, 230, 230, 0.884);
+    top: 520px;
+    right: 750px;
+    z-index: 2;
+}
+
+.entrar{
+    background-color: rgba(230, 230, 230, 0.884);
+    box-shadow: 1px 1px 6px;
+    position: fixed;
+    height: 30px;
+    width: 100px;
+    top: 600px;
+    border-radius: 8px;
+    right: 580px;
+}
+.textoEntrar {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+     z-index: 3;
+     font-size: 10px;
+     left: 20px;
+     top: 8px;
+}
