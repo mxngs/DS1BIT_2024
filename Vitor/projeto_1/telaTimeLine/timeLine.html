@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Tarefas</title>
+<script src="./timeLine.js"></script>
+<link rel="stylesheet" href="./timeLine.css">
+</head>
+<body> 
+    
+
+
+    <header>
+        <h1>Site de Tarefas</h1>
+    </header>
+    <div class="container">
+        <div id="premium-content" class="premium-content">
+            <h2>Criar Nova Tarefa</h2>
+            <label for="title">Título:</label><br>
+            <input type="text" id="title" name="title"><br>
+            <label for="description">Descrição:</label><br>
+            <textarea id="description" name="description"></textarea><br>
+            <label for="due-date">Data de Finalização:</label><br>
+            <input type="date" id="due-date" name="due-date"><br>
+            <button onclick="createTask()">Criar Tarefa</button>
+            <button onclick="cancelPremium()">Cancelar Premium</button>
+        </div>
+
+        <div id="tasks">
+            
+        </div>
+
+        <button id="premium-button" class="premium-button" onclick="upgrade()">Tornar-se Premium</button>
+    </div>
+
+</body>

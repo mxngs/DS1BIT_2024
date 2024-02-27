@@ -1,40 +1,30 @@
-const nome = document.getEelementById ('nome').value
-const senha = document.getEelementById ('senha').value
-
 async function validarLogin(){
 
+      const nome = document.getElementById('nomeInput').value
+      const senha = document.getElementById('senhaInput').value
+            
       if(nome === '' || senha === ''){
-            alert('Por favor, preencha todos os campos!!')
-         return false
-       }
+          alert('Por favor, preencha todos os campos!!')
+          return false;
+      }
+  
+      try {
+  
+          const users = await fetch('http://localhost:5080/usuario');
+  
+          const listUsers = await users.json();
 
-      try { 
-        
-//ver a porta antes de colocar a porta - 8080
-       const users =await fetch('http://localhost:8080/usuario')
-
-
-const listUsers = await users.json();
-
-listUsers.forEach((user) => {
- if(nome === user.nome && senha === user.senha){
-alert('Usuário logado com sucesso !!')
-return true;
-}
-console.log(user.nome)
-})
-
-alert('Usuário não encontrado !!')
-return false;
-
-console.log(listUsers);
-return true;
-
-} catch (error) {
-     alert('Erro ao acessar a API!')
-     console.error(error)
-}
-
-
-
-}
+          listUsers.forEach((user) => {
+            console.log(user)
+              if(nome == user.nome && senha == user.senha){
+                 
+                  alert('Usuário Logado com Sucesso !!');
+                  window.location.href = '../telaTimeLine/timeLine.html'
+              }
+          })
+      } catch (error) {
+          alert('Erro ao acessar a API !')
+          console.error(error);
+      }
+  
+  }

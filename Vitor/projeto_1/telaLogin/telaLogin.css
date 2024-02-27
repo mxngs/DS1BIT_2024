@@ -112,6 +112,11 @@
     left: 580px;
 }
 
+button{
+    height: 30px;
+    width: 100px;
+}
+
 .textoSenha p{
     position: absolute;
     background-color: rgb(255, 255, 255);
