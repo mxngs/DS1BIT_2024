@@ -1,54 +1,63 @@
 
-document.getElementById('task-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+  const taskForm = document.getElementById('taskForm');
+  const pendingTasksList = document.getElementById('pendingTasks');
+  const completedTasksList = document.getElementById('completedTasks');
 
-  const title = document.getElementById('title').value;
-  const description = document.getElementById('description').value;
-  const date = document.getElementById('date').value;
+  taskForm.addEventListener('submit', function (event) {
+      event.preventDefault();
 
-  const taskItem = document.createElement('div');
-  taskItem.classList.add('task-item');
-  taskItem.innerHTML = `
-    <h3>${title}</h3>
-    <p><strong>Data:</strong> ${date}</p>
-    <p>${description}</p>
-  `;
+      const taskTitle = document.getElementById('taskTitle').value;
+      const taskDescription = document.getElementById('taskDescription').value;
+      const taskDueDate = document.getElementById('taskDueDate').value;
 
-  document.getElementById('task-list').appendChild(taskItem);
-  document.getElementById('task-list').appendChild(taskItem);
-  
-  // Limpar os campos do formulário
-  document.getElementById('title').value = '';
-  document.getElementById('description').value = '';
-  document.getElementById('date').value = '';
+      if (taskTitle && taskDescription && taskDueDate) {
+          const newTaskItem = document.createElement('li');
+          newTaskItem.innerHTML = `
+              <strong>${taskTitle}</strong> - ${taskDescription} (Due: ${taskDueDate})
+          `;
+          const completeButton = document.createElement('button');
+          completeButton.textContent = 'Concluir';
+          completeButton.addEventListener('click', function () {
+              newTaskItem.remove();
+              completedTasksList.appendChild(newTaskItem);
+              completeButton.remove();
+          });
+          newTaskItem.appendChild(completeButton);
+
+          pendingTasksList.appendChild(newTaskItem);
+
+          taskForm.reset();
+      } else {
+          alert('Por favor, preencha todos os campos da tarefa.');
+      }
+  });
 });
+// Adiciona um botão de "Editar" para cada tarefa
+function addEditButton(taskItem) {
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Editar';
+  editButton.addEventListener('click', function () {
+      const taskTitle = taskItem.querySelector('strong').textContent;
+      const taskDescription = taskItem.textContent.split('-')[1].split('(Due:')[0].trim();
+      const taskDueDate = taskItem.textContent.split('(Due:')[1].split(')')[0].trim();
 
-document.getElementById('task-list').addEventListener('click', function(e) {
-  if (e.target && e.target.matches('.task-item')) {
-    const task = e.target;
-    
-    // Permitir a edição do título da tarefa
-    const title = task.querySelector('h3');
-    const newTitle = prompt('Editar título:', title.textContent);
-    if (newTitle !== null) {
-      title.textContent = newTitle;
-    }
-    
-    // Permitir a edição da descrição da tarefa
-    const description = task.querySelector('p:nth-of-type(3)');
-    const newDescription = prompt('Editar descrição:', description.textContent);
-    if (newDescription !== null) {
-      description.textContent = newDescription;
-    }
-    
-    // Permitir a edição da data da tarefa
-    const date = task.querySelector('p:nth-of-type(2)');
-    const newDate = prompt('Editar data:', date.textContent.split(':')[1].trim());
-    if (newDate !== null) {
-      date.textContent = `Data: ${newDate}`;
+      document.getElementById('taskTitle').value = taskTitle;
+      document.getElementById('taskDescription').value = taskDescription;
+      document.getElementById('taskDueDate').value = taskDueDate;
 
-    }
-  }
-    });
+      taskItem.remove();
+  });
+  return editButton;
+}
 
-    
+// Atualiza a tarefa com os novos dados
+function updateTask(taskItem, newTitle, newDescription, newDueDate) {
+  taskItem.innerHTML = `
+      <strong>${newTitle}</strong> - ${newDescription} (Due: ${newDueDate})
+  `;
+  const editButton = addEditButton(taskItem);
+  const completeButton = createCompleteButton(taskItem);
+  taskItem.appendChild(editButton);
+  taskItem.appendChild(completeButton);
+}

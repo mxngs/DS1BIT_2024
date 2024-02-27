@@ -1,5 +1,5 @@
-const nome = document.getEelementById ('validaEmail').value
-const senha = document.getEelementById ('validaSenha').value
+const nome = document.getEelementById ('nome').value
+const senha = document.getEelementById ('senha').value
 
 async function validarLogin(){
 
